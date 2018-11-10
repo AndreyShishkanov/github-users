@@ -1,0 +1,17 @@
+<table class="table table-striped table-hover" *ngIf="users">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Login</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; index as i" (click)="goToUser(user.login)">
+        <th scope="row">{{i + 1}}</th>
+        <td scope="row">{{user.login}}</td>
+        <td scope="row">{{user.name}}</td>
+    </tr>
+    </tbody>
+</table>
+<span *ngIf="!users">Loading...</span>
