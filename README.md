@@ -1,4 +1,4 @@
-# Drooms Test Exercise
+# Test Exercise
 
 ## Details
 

@@ -1,17 +1,49 @@
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label">Login</label>
-    <div class="col-sm-10 col-form-label">{{user?.login}}</div>
+<div class="row" *ngIf="user">
+    <div class="col-sm">
+        <img [src]="user.avatarUrl" alt="avatar" class="rounded form-group row">
+    </div>
+    <div class="col-sm">
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Login:</label>
+            <div class="col-sm col-form-label">{{user.login}}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Name:</label>
+            <div class="col-sm col-form-label">{{user.name}}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Email:</label>
+            <div class="col-sm col-form-label">{{user.email}}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Created at:</label>
+            <div class="col-sm col-form-label">{{user.createdAt | date}}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Bio:</label>
+            <div class="col-sm col-form-label" [innerHTML]="user.bioHTML"></div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Company:</label>
+            <div class="col-sm col-form-label" [innerHTML]="user.companyHTML"></div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Location:</label>
+            <div class="col-sm col-form-label">{{user.location}}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Hireable:</label>
+            <div class="col-sm col-form-label">{{user.isHireable ? 'Yes' : 'No'}}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Link to profile:</label>
+            <div class="col-sm col-form-label"><a target="_blank" [href]="'https://github.com' + user.resourcePath">https://github.com{{user.resourcePath}}</a></div>
+        </div>
+    </div>
 </div>
+
 <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Name</label>
-    <div class="col-sm-10 col-form-label">{{user?.name}}</div>
-</div>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label">Created at</label>
-    <div class="col-sm-10 col-form-label">{{user?.createdAt | date}}</div>
-</div>
-<div class="form-group row">
-    <div class="col-sm-10">
+    <div class="col-sm">
         <button class="btn btn-dark" (click)="returnBack()">Return</button>
     </div>
 </div>

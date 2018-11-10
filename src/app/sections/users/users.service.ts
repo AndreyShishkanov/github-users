@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import {Query, Search, User} from '@classes/Query';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Query, Search} from '@classes/Query';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {map} from 'rxjs/operators';
+import {User} from '@classes/User';
 
 @Injectable()
 export class UsersService {
@@ -52,7 +53,10 @@ export class UsersService {
                             avatarUrl,
                             email,
                             createdAt,
-                            location
+                            location,
+                            companyHTML,
+                            isHireable,
+                            resourcePath
                         }
                     }
                 `,

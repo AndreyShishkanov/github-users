@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
         request = request.clone({
             setHeaders: {
                 // hardcode
-                Authorization: `bearer 86149e206c18790cd9f1862a2729472ceb32ffc3`
+                Authorization: `bearer b5687ae81129dd67ce91ed6519691bd213a0a37e`
             }
         });
         return next.handle(request);

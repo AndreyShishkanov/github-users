@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {UsersService} from '../users.service';
-import {User} from '@classes/Query';
+import {User} from '@classes/User';
 import {Router} from '@angular/router';
 
 @Component({
