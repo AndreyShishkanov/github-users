@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 import {UsersModule} from './sections/users/users.module';
 import {GraphQLModule} from './graphql.module';
 import {TokenInterceptor} from './auth/token.interceptor';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import {TokenInterceptor} from './auth/token.interceptor';
         routing,
         HttpClientModule,
         UsersModule,
-        GraphQLModule
+        GraphQLModule,
+        SharedModule,
     ],
     providers: [
         {

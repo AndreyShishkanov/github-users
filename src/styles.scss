@@ -15,6 +15,23 @@ main {
     }
 }
 
-.nav-item{
-    cursor: pointer;
+.users-table{
+    tr{
+        cursor: pointer;
+    }
+    
+    .preview{
+        height: 30px;
+    }
 }
+
+nav {
+    .nav-item{
+        cursor: pointer;
+    }
+    
+    #inputToken{
+        width: 440px;
+    }
+}
+

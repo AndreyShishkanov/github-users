@@ -1,0 +1,11 @@
+<div class="form-group row mb-0">
+    <label for="inputToken" class="col col-form-label text-white">
+        Input token from <a href="https://github.com/settings/tokens/new" target="_blank">here</a>
+    </label>
+    <div class="col pr-0 pl-0">
+        <input type="text" class="form-control" id="inputToken" placeholder="Token" [(ngModel)]="token">
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-light" (click)="setToken()">Submit</button>
+    </div>
+</div>

@@ -7,8 +7,14 @@ export interface Query {
 
 export interface Search {
     edges: Item[];
+    pageInfo: PageInfo;
 }
 
 export interface Item {
     node: User;
+}
+
+export interface PageInfo {
+    endCursor: string;
+    hasNextPage: boolean;
 }

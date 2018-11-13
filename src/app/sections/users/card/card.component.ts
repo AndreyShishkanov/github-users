@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {UsersService} from '../users.service';
 import {User} from '@classes/User';
+import {ApolloError} from 'apollo-client';
 
 @Component({
     selector: 'app-card',
@@ -11,13 +12,17 @@ import {User} from '@classes/User';
 export class CardComponent {
     user: User;
     
-    constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, public tableService: UsersService) {
+    errorMessage: string;
+    
+    constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, public usersService: UsersService) {
         const login = this.route.snapshot.paramMap.get('login');
         
         this.titleService.setTitle(login);
         
-        this.tableService.getUserByLogin(login).subscribe(user => {
+        this.usersService.getUserByLogin(login).subscribe(user => {
             this.user = user;
+        }, (error: ApolloError) => {
+            this.errorMessage = `${error.message}. Input token.`;
         });
     }
     
