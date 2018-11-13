@@ -20,11 +20,11 @@ export class ListComponent implements OnInit, OnDestroy {
     getData: (amount: number, cursor?: string) => Observable<User[]>;
     pending = false;
     
-    errorMessage: string;
+    errorMessage: ApolloError;
     
     constructor(private titleService: Title, private usersService: UsersService, private router: Router) {
         this.titleService.setTitle(this.title);
-        this.getData = this.usersService.getData();
+        this.getData = this.usersService.makeDataGetter();
     }
     
     ngOnInit() {
@@ -33,7 +33,7 @@ export class ListComponent implements OnInit, OnDestroy {
             this.users.push(...users);
             this.pending = false;
         }, (error: ApolloError) => {
-            this.errorMessage = `${error.message}. Input token.`;
+            this.errorMessage = error;
         });
     }
     

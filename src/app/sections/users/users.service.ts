@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {Query, Search} from '@classes/Query';
+import {Query} from '@classes/Query';
 import {Apollo, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {User} from '@classes/User';
 import {ApolloError} from 'apollo-client';
 
@@ -11,7 +11,6 @@ import {ApolloError} from 'apollo-client';
 export class UsersService {
     
     itemsOnPage = 100;
-    // cursor: string = null;
     
     private users$: Subject<User[]> = new Subject();
     
@@ -43,29 +42,7 @@ export class UsersService {
     
     }
     
-    // getData(amount: number): Observable<User[]> {
-    //     this.apollo.watchQuery<Query>({
-    //             query: this.usersQuery,
-    //             variables: {
-    //                 after: this.cursor,
-    //                 first: amount > this.itemsOnPage ? 100 : this.itemsOnPage
-    //             }
-    //         })
-    //         .valueChanges.pipe(map(x => x.data)).subscribe(response => {
-    //             this.users$.next(response.search.edges.map(x => x.node));
-    //
-    //             amount = amount - 100;
-    //             this.cursor = response.search.pageInfo.endCursor;
-    //
-    //             if (amount > 0) {
-    //                 this.getData(amount).subscribe();
-    //             }
-    //         }
-    //     );
-    //     return this.users$.asObservable();
-    // }
-    
-    getData(): (amount: number, cursor?: string) => Observable<User[]> {
+    makeDataGetter(): (amount: number, cursor?: string) => Observable<User[]> {
         let cursor: string;
         
         const that = this;

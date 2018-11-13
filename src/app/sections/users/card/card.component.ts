@@ -12,7 +12,7 @@ import {ApolloError} from 'apollo-client';
 export class CardComponent {
     user: User;
     
-    errorMessage: string;
+    errorMessage: ApolloError;
     
     constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, public usersService: UsersService) {
         const login = this.route.snapshot.paramMap.get('login');
@@ -22,7 +22,7 @@ export class CardComponent {
         this.usersService.getUserByLogin(login).subscribe(user => {
             this.user = user;
         }, (error: ApolloError) => {
-            this.errorMessage = `${error.message}. Input token.`;
+            this.errorMessage = error;
         });
     }
     
