@@ -6,8 +6,9 @@ You can generate the token [here](https://github.com/settings/tokens/new). It wi
 
 ## Details
 
-- Loads first 1.000 users by using GitHub graphl API using infinite scroll
+- Loads first 1.000 users using GitHub graphl API
 - Shows them as list
+- List has infinite scroll
 - Click on user shows details about him/her
 - While viewing users, it is possible to search locally (search in memory without requesting GitHub API)
 
