@@ -5,15 +5,17 @@ import {CardComponent} from './card/card.component';
 import {routing} from './users.routing';
 import {UsersService} from './users.service';
 import {UserSearchPipe} from './list/user-search-pipe/user-search.pipe';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {NgProgressModule} from '@ngx-progressbar/core';
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         routing,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        NgProgressModule.forRoot()
     ],
     declarations: [ListComponent, CardComponent, UserSearchPipe],
     exports: [ListComponent, CardComponent],

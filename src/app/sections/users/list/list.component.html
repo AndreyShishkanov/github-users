@@ -1,15 +1,16 @@
+<ng-progress [min]="1" [spinner]="false" #progressBar></ng-progress>
+
+<span *ngIf="!errorMessage && users?.length < maxUsersOnPage">Loaded... {{users?.length / maxUsersOnPage | percent}}</span>
+
 <ng-container *ngIf="users && users.length > 0">
 
-    <div class="form-group mt-3">
-        <input type="search" class="form-control" placeholder="search" [(ngModel)]="searchText" autofocus>
-    </div>
+    <form [formGroup]="form">
+        <div class="form-group mt-3">
+            <input type="search" formControlName="searchText" class="form-control" placeholder="search" autofocus>
+        </div>
+    </form>
 
-    <table class="table table-striped table-hover users-table"
-           infiniteScroll
-           [infiniteScrollDistance]="2"
-           [infiniteScrollThrottle]="50"
-           (scrolled)="getMoreData()"
-           [infiniteScrollDisabled]="pending || users.length >= 1000">
+    <table class="table table-striped table-hover users-table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -37,5 +38,3 @@
 </ng-container>
 
 <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}. You need to input correct token.</span>
-
-<span *ngIf="!users && !errorMessage">Loading...</span>
